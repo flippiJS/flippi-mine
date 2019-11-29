@@ -1,0 +1,19 @@
+{
+  "name": "flippi-mine",
+  "version": "1.0.0",
+  "description": "Una solucion para cargar las hs",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "flippi",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "node-redmine": "^0.2.1",
+    "path": "^0.12.7",
+    "request": "^2.88.0"
+  }
+}

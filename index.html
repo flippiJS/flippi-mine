@@ -1,0 +1,1119 @@
+<html>
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <!--  
+
+
+
+        /$$$$$$$$ /$$ /$$                     /$$ /$$      /$$ /$$                    
+        | $$_____/| $$|__/                    |__/| $$$    /$$$|__/                    
+        | $$      | $$ /$$  /$$$$$$   /$$$$$$  /$$| $$$$  /$$$$ /$$ /$$$$$$$   /$$$$$$ 
+        | $$$$$   | $$| $$ /$$__  $$ /$$__  $$| $$| $$ $$/$$ $$| $$| $$__  $$ /$$__  $$
+        | $$__/   | $$| $$| $$  \ $$| $$  \ $$| $$| $$  $$$| $$| $$| $$  \ $$| $$$$$$$$
+        | $$      | $$| $$| $$  | $$| $$  | $$| $$| $$\  $ | $$| $$| $$  | $$| $$_____/
+        | $$      | $$| $$| $$$$$$$/| $$$$$$$/| $$| $$ \/  | $$| $$| $$  | $$|  $$$$$$$
+        |__/      |__/|__/| $$____/ | $$____/ |__/|__/     |__/|__/|__/  |__/ \_______/
+                        | $$      | $$                                               
+                        | $$      | $$                                               
+                        |__/      |__/          v 1.0
+                        
+                        
+
+    -->
+    <!-- CSS en el html like <stron-16>   -->
+    <style>
+        body {
+            background-color: #eee;
+        }
+
+        /* Absolute Center Spinner */
+        .loading {
+            position: fixed;
+            z-index: 999;
+            height: 2em;
+            width: 2em;
+            overflow: show;
+            margin: auto;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+
+        /* Transparent Overlay */
+        .loading:before {
+            content: '';
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(rgba(20, 20, 20, .8), rgba(0, 0, 0, .8));
+
+            background: -webkit-radial-gradient(rgba(20, 20, 20, .8), rgba(0, 0, 0, .8));
+        }
+
+        /* :not(:required) hides these rules from IE9 and below */
+        .loading:not(:required) {
+            /* hide "loading..." text */
+            font: 0/0 a;
+            color: transparent;
+            text-shadow: none;
+            background-color: transparent;
+            border: 0;
+        }
+
+        .loading:not(:required):after {
+            content: '';
+            display: block;
+            font-size: 10px;
+            width: 1em;
+            height: 1em;
+            margin-top: -0.5em;
+            -webkit-animation: spinner 1500ms infinite linear;
+            -moz-animation: spinner 1500ms infinite linear;
+            -ms-animation: spinner 1500ms infinite linear;
+            -o-animation: spinner 1500ms infinite linear;
+            animation: spinner 1500ms infinite linear;
+            border-radius: 0.5em;
+            -webkit-box-shadow: rgba(255, 255, 255, 0.75) 1.5em 0 0 0, rgba(255, 255, 255, 0.75) 1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) 0 1.5em 0 0, rgba(255, 255, 255, 0.75) -1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) -1.5em 0 0 0, rgba(255, 255, 255, 0.75) -1.1em -1.1em 0 0, rgba(255, 255, 255, 0.75) 0 -1.5em 0 0, rgba(255, 255, 255, 0.75) 1.1em -1.1em 0 0;
+            box-shadow: rgba(255, 255, 255, 0.75) 1.5em 0 0 0, rgba(255, 255, 255, 0.75) 1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) 0 1.5em 0 0, rgba(255, 255, 255, 0.75) -1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) -1.5em 0 0 0, rgba(255, 255, 255, 0.75) -1.1em -1.1em 0 0, rgba(255, 255, 255, 0.75) 0 -1.5em 0 0, rgba(255, 255, 255, 0.75) 1.1em -1.1em 0 0;
+        }
+
+        /* Animation */
+
+        @-webkit-keyframes spinner {
+            0% {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @-moz-keyframes spinner {
+            0% {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @-o-keyframes spinner {
+            0% {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spinner {
+            0% {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        .form-container div,
+        .form-container span {
+            font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+        }
+
+        .form-container ::-webkit-input-placeholder {
+            /* WebKit, Blink, Edge */
+            color: #999;
+        }
+
+        .form-container :-moz-placeholder {
+            /* Mozilla Firefox 4 to 18 */
+            color: #999;
+            opacity: 1;
+        }
+
+        .form-container ::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            color: #999;
+            opacity: 1;
+        }
+
+        .form-container :-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: #999;
+        }
+
+        .form-container :placeholder-shown {
+            /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+            color: #999;
+        }
+
+        .oauth-buttons {
+            text-align: center;
+        }
+
+        .row {
+            text-align: center;
+        }
+
+        #login-form {
+            min-width: 375px;
+        }
+
+        .login-container {
+            width: 400px;
+            height: 330px;
+            display: inline-block;
+            margin-top: -165px;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            margin-left: -200px;
+        }
+
+        .form-container .create-account:hover {
+            opacity: .7;
+        }
+
+        .form-container .create-account {
+            color: inherit;
+            margin-top: 15px;
+            display: inline-block;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .oauth-buttons .fa {
+            cursor: pointer;
+            margin-top: 10px;
+            color: inherit;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            margin: 5px;
+            margin-top: 15px;
+        }
+
+        .oauth-buttons .fa:hover {
+            color: white;
+        }
+
+        .oauth-buttons .fa-google-plus:hover {
+            background: #dd4b39;
+        }
+
+        .oauth-buttons .fa-facebook:hover {
+            background: #8b9dc3;
+        }
+
+        .oauth-buttons .fa-linkedin:hover {
+            background: #0077b5;
+        }
+
+        .oauth-buttons .fa-twitter:hover {
+            background: #55acee;
+        }
+
+        .form-container .req-input .input-status {
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            float: left;
+        }
+
+        .form-container .input-status::before {
+            content: " ";
+            height: 20px;
+            width: 20px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            border-radius: 50%;
+            background: white;
+            -webkit-transition: all .3s ease-in-out;
+            -moz-transition: all .3s ease-in-out;
+            -o-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+
+        }
+
+        .form-container .input-status::after {
+            content: " ";
+            height: 10px;
+            width: 10px;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: white;
+            border-radius: 50%;
+            background: #00BCD4;
+            -webkit-transition: all .3s ease-in-out;
+            -moz-transition: all .3s ease-in-out;
+            -o-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+        }
+
+        .form-container .req-input {
+            width: 100%;
+            float: left;
+            position: relative;
+            background: #00BCD4;
+            height: 40px;
+            display: inline-block;
+            border-radius: 0px;
+            margin: 5px 0px;
+            -webkit-transition: all .3s ease-in-out;
+            -moz-transition: all .3s ease-in-out;
+            -o-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+        }
+
+        .form-container div .row .invalid:hover {
+            background: #EF9A9A;
+        }
+
+        .form-container div .row .invalid {
+            background: #E57373;
+        }
+
+        .form-container .invalid .input-status:before {
+            width: 20px;
+            height: 4px;
+            top: 19px;
+            left: 10px;
+            background: white;
+            /*#F44336;*/
+            border-radius: 0px;
+            -ms-transform: rotate(45deg);
+            /* IE 9 */
+            -webkit-transform: rotate(45deg);
+            /* Chrome, Safari, Opera */
+            transform: rotate(45deg);
+        }
+
+        .form-container .invalid .input-status:after {
+            width: 20px;
+            height: 4px;
+            background: white;
+            border-radius: 0px;
+            top: 19px;
+            left: 10px;
+            -ms-transform: rotate(-45deg);
+            /* IE 9 */
+            -webkit-transform: rotate(-45deg);
+            /* Chrome, Safari, Opera */
+            transform: rotate(-45deg);
+        }
+
+        .form-container div .row .valid:hover {
+            background: #A5D6A7;
+        }
+
+        .form-container div .row .valid {
+            background: #81C784;
+
+        }
+
+        .form-container .valid .input-status:after {
+            border-radius: 0px;
+            width: 17px;
+            height: 4px;
+            background: white;
+            top: 16px;
+            left: 15px;
+            -ms-transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+
+        .form-container .valid .input-status:before {
+            border-radius: 0px;
+            width: 11px;
+            height: 4px;
+            background: white;
+            top: 19px;
+            left: 10px;
+            -ms-transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        .form-container .input-container {
+            padding: 0px 20px;
+        }
+
+        .form-container .row-input {
+            padding: 0px 5px;
+        }
+
+        .form-container .req-input.input-password {
+            margin-bottom: 0px;
+        }
+
+        .form-container .req-input.confirm-password {
+            margin-top: 0px;
+        }
+
+        .form-container {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 0px;
+            background: #B3E5FC;
+            color: #00838F;
+            -webkit-transition: all .3s ease-in-out;
+            -moz-transition: all .3s ease-in-out;
+            -o-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+        }
+
+        .form-container .form-title {
+            font-size: 25px;
+            color: inherit;
+            text-align: center;
+            margin-bottom: 10px;
+            -webkit-transition: all .3s ease-in-out;
+            -moz-transition: all .3s ease-in-out;
+            -o-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+        }
+
+        .form-container .submit-row {
+            padding: 0px 0px;
+        }
+
+        .form-container .btn.submit-form {
+            margin-top: 15px;
+            padding: 12px;
+            background: #00BCD4;
+            color: white;
+            border-radius: 0px;
+            -webkit-transition: all .3s ease-in-out;
+            -moz-transition: all .3s ease-in-out;
+            -o-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+        }
+
+        .form-container .btn.submit-form:focus {
+            outline: 0px;
+            color: white;
+        }
+
+        .form-container .btn.submit-form:hover {
+            background: #00cde5;
+            color: white;
+        }
+
+        .form-container .tooltip.top .tooltip-arrow {
+            border-top-color: #00BCD4 !important;
+        }
+
+        .form-container .tooltip.top.tooltip-invalid .tooltip-arrow {
+            border-top-color: #E57373 !important;
+        }
+
+        .form-container .tooltip.top.tooltip-invalid .tooltip-inner::before {
+            background: #E57373;
+        }
+
+        .form-container .tooltip.top.tooltip-invalid .tooltip-inner {
+            background: #FFEBEE !important;
+            color: #E57373;
+        }
+
+        .form-container .tooltip.top.tooltip-valid .tooltip-arrow {
+            border-top-color: #81C784 !important;
+        }
+
+        .form-container .tooltip.top.tooltip-valid .tooltip-inner::before {
+            background: #81C784;
+        }
+
+        .form-container .tooltip.top.tooltip-valid .tooltip-inner {
+            background: #E8F5E9 !important;
+            color: #81C784;
+        }
+
+        .form-container .tooltip.top .tooltip-inner::before {
+            content: " ";
+            width: 100%;
+            height: 6px;
+            background: #00BCD4;
+            position: absolute;
+            bottom: 5px;
+            right: 0px;
+        }
+
+        .form-container .tooltip.top .tooltip-inner {
+            border: 0px solid #00BCD4;
+            background: #E0F7FA !important;
+            color: #00ACC1;
+            font-weight: bold;
+            font-size: 13px;
+            border-radius: 0px;
+            padding: 10px 15px;
+        }
+
+        .form-container .tooltip {
+            max-width: 150px;
+            opacity: 1 !important;
+        }
+
+        .form-container .message-box {
+            width: 100%;
+            height: auto;
+        }
+
+        .form-container textarea:focus,
+        .form-container textarea:hover {
+            background: #fff;
+            outline: none;
+            border: 0px;
+        }
+
+        .form-container .req-input textarea {
+            max-width: calc(100% - 50px);
+            width: 100%;
+            height: 80px;
+            border: 0px;
+            color: #777;
+            padding: 10px 9px 0px 9px;
+            float: left;
+
+        }
+
+        .form-container input[type=text]:focus,
+        .form-container input[type=password]:focus,
+        .form-container input[type=email]:focus,
+        .form-container input[type=tel]:focus,
+        .form-container select {
+            background: #fff;
+            color: #777;
+            border-left: 0px;
+            outline: none;
+        }
+
+        .form-container input[type=text]:hover,
+        .form-container input[type=password]:hover,
+        .form-container input[type=email]:hover,
+        .form-container input[type=tel]:hover,
+        . form-container select {
+            background: #fff;
+        }
+
+        .form-container input[type=text],
+        .form-container input[type=password],
+        .form-container input[type=email],
+        input[type=tel],
+        form-container select {
+            width: calc(100% - 50px);
+            float: left;
+            border-radius: 0px;
+            border: 0px solid #ddd;
+            padding: 0px 9px;
+            height: 40px;
+            line-height: 40px;
+            color: #777;
+            background: #fff;
+            -webkit-transition: all .3s ease-in-out;
+            -moz-transition: all .3s ease-in-out;
+            -o-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+        }
+
+        input#hsMes {
+            width: calc(100% - 50px);
+            height: 40px;
+            border-radius: 0px;
+            border: 0px solid #ddd;
+        }
+
+        input#mesMes {
+            width: calc(100% - 50px);
+            height: 40px;
+            border-radius: 0px;
+            border: 0px solid #ddd;
+        }
+
+        input#hsRango {
+            width: calc(100% - 50px);
+            height: 40px;
+            border-radius: 0px;
+            border: 0px solid #ddd;
+        }
+
+
+        input#hsDia {
+            width: calc(100% - 50px);
+            height: 40px;
+            border-radius: 0px;
+            border: 0px solid #ddd;
+        }
+
+        input#diaDia {
+            width: calc(100% - 50px);
+            height: 40px;
+            border-radius: 0px;
+            border: 0px solid #ddd;
+        }
+
+        input#mesMesC {
+            width: calc(100% - 50px);
+            height: 40px;
+            border-radius: 0px;
+            border: 0px solid #ddd;
+        }
+
+        input#desdeRango {
+            width: calc(100% - 50px);
+            height: 40px;
+            border-radius: 0px;
+            border: 0px solid #ddd;
+        }
+
+
+        input#hastaRango {
+            width: calc(100% - 50px);
+            height: 40px;
+            border-radius: 0px;
+            border: 0px solid #ddd;
+        }
+
+        input[type="date"]:before {
+            content: attr(placeholder) !important;
+            color: #aaa;
+            margin-right: 0.5em;
+        }
+
+        input[type="date"]:focus:before,
+        input[type="date"]:valid:before {
+            content: "";
+        }
+
+        input[type="month"]:before {
+            content: attr(placeholder) !important;
+            color: #aaa;
+            margin-right: 0.5em;
+        }
+
+        input[type="month"]:focus:before,
+        input[type="month"]:valid:before {
+            content: "";
+        }
+    </style>
+    <title>FlippiMine - Una solucion para cargar tus hs</title>
+</head>
+
+<body>
+    <div class="loading">Cargando&#8230;</div>
+    <div class="container" style="text-align: center">
+        <div class="row">
+            <h2>FlippiMine</h2>
+            <!-- Feedbacks-->
+            <div class="alert alert-success alert-dismissible" id="aSuccess" style="display: none" role="alert">
+                Cargado con exito
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="alert alert-danger alert-dismissible" id="aError" style="display: none" role="alert">
+                Hubo un error
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- FIN Feedbacks-->
+
+            <!-- Carga por DIA-->
+            <div class="col-md-6">
+                <form>
+                    <div id="contact-form" class="form-container" data-form-container>
+                        <div class="row">
+                            <div class="form-title">
+                                <span>Cargar Horas x DIA </span>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="row">
+                                <span class="req-input">
+                                    <span class="input-status"> </span>
+                                    <input type="text" id="tokenDia" data-min-length="40"
+                                        placeholder="Redmine TOKEN API" value="">
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span class="req-input">
+                                    <span class="input-status"> </span>
+                                    <input type="text" id="issueDia" data-min-length="4"
+                                        placeholder="N° de Issue - Ej: 7500" value="">
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span class="req-input">
+                                    <span class="input-status"> </span>
+                                    <input class="form-control" type="date" id="diaDia" data-min-length="10"
+                                        placeholder="Dia " value="">
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span class="req-input">
+                                    <span class="input-status"> </span>
+                                    <input type="number" class="form-control" id="hsDia" data-min-length="1"
+                                        placeholder="Cantidad Hs" value="">
+                                </span>
+                            </div>
+                            <div class="row submit-row">
+                                <button type="button" id="cargarDia" class="btn btn-block submit-form">Cargar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--FIN DIA-->
+
+            <!-- Carga por MES-->
+            <div class="col-md-6">
+                <form>
+                    <div id="contact-form" class="form-container" data-form-container>
+                        <div class="row">
+                            <div class="form-title">
+                                <span>Cargar Horas x MES</span>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="row">
+                                <span class="req-input">
+                                    <span class="input-status"> </span>
+                                    <input type="text" id="tokenMes" data-min-length="40"
+                                        placeholder="Redmine TOKEN API" value="">
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span class="req-input">
+                                    <span class="input-status"> </span>
+                                    <input type="text" id="issueMes" data-min-length="4"
+                                        placeholder="N° de Issue - Ej: 7500" value="">
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span class="req-input">
+                                    <span class="input-status"> </span>
+                                    <input class="form-control" type="month" id="mesMes" data-min-length="2"
+                                        placeholder="Mes " value="">
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span class="req-input">
+                                    <span class="input-status"> </span>
+                                    <input type="number" class="form-control" id="hsMes" data-min-length="1"
+                                        placeholder="Cantidad Hs x Dia" value="">
+                                </span>
+                            </div>
+                            <div class="row submit-row">
+                                <button type="button" id="cargarMes" class="btn btn-block submit-form">Cargar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- FIN MES-->
+
+            <!-- Carga por Rango-->
+            <div class="col-md-12">
+                <form>
+                    <div id="contact-form" class="form-container" data-form-container>
+                        <div class="row">
+                            <div class="form-title">
+                                <span>Cargar Horas x RANGO</span>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="row">
+                                <span class="req-input">
+                                    <span class="input-status"> </span>
+                                    <input type="text" id="tokenRango" data-min-length="40"
+                                        placeholder="Redmine TOKEN API" value="">
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span class="req-input">
+                                    <span class="input-status"> </span>
+                                    <input type="text" id="issueRango" data-min-length="4"
+                                        placeholder="N° de Issue - Ej: 7500" value="">
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span class="req-input">
+                                    <span class="input-status"> </span>
+                                    <input class="form-control" type="date" id="desdeRango" data-min-length="2"
+                                        placeholder="Desde " value="">
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span class="req-input">
+                                    <span class="input-status"> </span>
+                                    <input class="form-control" type="date" id="hastaRango" data-min-length="2"
+                                        placeholder="Hasta " value="">
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span class="req-input">
+                                    <span class="input-status"> </span>
+                                    <input type="number" class="form-control" id="hsRango" data-min-length="1"
+                                        placeholder="Cantidad Hs x Dia" value="">
+                                </span>
+                            </div>
+                            <div class="row submit-row">
+                                <button type="button" id="cargarRango" class="btn btn-block submit-form">Cargar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- FIN MES-->
+
+            <!-- Consulta hs por MES-->
+            <div class="col-md-12">
+                <form>
+                    <div id="contact-form" class="form-container" data-form-container>
+                        <div class="row">
+                            <div class="form-title">
+                                <span>Consulta horas x MES</span>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="row">
+                                <span class="req-input">
+                                    <span class="input-status"> </span>
+                                    <input type="text" id="tokenMesC" data-min-length="40"
+                                        placeholder="Redmine TOKEN API" value="">
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span class="req-input">
+                                    <span class="input-status"> </span>
+                                    <input class="form-control" type="month" id="mesMesC" data-min-length="1"
+                                        placeholder="Mes " value="">
+                                </span>
+                            </div>
+                            <div class="row submit-row">
+                                <button type="button" id="consultarMes"
+                                    class="btn btn-block submit-form">Consultar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- Resultado -->
+                <div id="resultList" style="display: none" class="form-container" data-form-container>
+                    <div class="row">
+                        <div class="form-title">
+                            <span id="resultName"></span>
+                        </div>
+                        <div class="form-title">
+                            <span>Total horas cargadas en el mes:</span> <span id="resultTotal"></span>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <div class="list-group list-group-flush">
+                            <span>Resultado</span>
+                            <table class="table table-hover" style="background-color: white">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Horas</th>
+                                        <th>Tipo Hora</th>
+                                        <th>Proyecto / Issue</th>
+                                        <th>Actividad</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN Consulta-->
+
+        </div>
+        <!-- Disclaimer mucho muy importante-->
+        <h6>2019 - Uselo bajo su responsablidad - v 1.0</h6>
+    </div>
+
+    <!-- Scripts en el html like wachin-->
+    <script>
+        $(function () {
+            $(".loading").hide();
+            $('#resultList').hide();
+
+            $(".req-input input").on("click input", function () {
+                validate($(this).closest("[data-form-container]"));
+            });
+
+            var currentlySelected;
+            $(document).mousedown(function (e) {
+                currentlySelected = $(e.target);
+            });
+
+            $(".req-input input").on("blur", function (e) {
+                var Parent = $(this).closest("[data-form-container]");
+                if (typeof currentlySelected != "undefined" && currentlySelected.parent().hasClass("req-input") && Parent.attr("id") == currentlySelected.closest(".form-container").attr("id"))
+                    return;
+
+                var length = 0;
+                Parent.find("input").each(function () {
+                    length += $(this).val().length;
+                });
+                if (length == 0) {
+                    var container = $(this).closest(".form-container");
+                    resetForm(container);
+                }
+            });
+
+            $("#cargarDia").on('click', function () {
+                var token = $('#tokenDia').val();
+                var issue = $('#issueDia').val();
+                var hs = $('#hsDia').val();
+                var dia = $('#diaDia').val();
+
+                if (token && issue && hs && dia) {
+                    var req = {
+                        token,
+                        issue,
+                        hs,
+                        dia
+                    }
+
+                    doPost(req, '/api/cargarHorasDia', true);
+                }
+
+            });
+
+            $("#cargarMes").on('click', function () {
+                var token = $('#tokenMes').val();
+                var issue = $('#issueMes').val();
+                var hs = $('#hsMes').val();
+                // var mes = (parseInt($('#mesMes').val()) - 1);
+                var mes = (parseInt($('#mesMes').val().split('-')[1]) - 1);
+                if (token && issue && hs && mes >= 0) {
+                    var req = {
+                        token,
+                        issue,
+                        hs,
+                        mes
+                    }
+
+                    doPost(req, '/api/cargarHorasMes', true);
+                }
+            });
+
+            $("#cargarRango").on('click', function () {
+                var token = $('#tokenRango').val();
+                var issue = $('#issueRango').val();
+                var hs = $('#hsRango').val();
+                var desde = $('#desdeRango').val();
+                var hasta = $('#hastaRango').val();
+                if (token && issue && hs && desde && hasta) {
+                    var req = {
+                        token,
+                        issue,
+                        hs,
+                        desde,
+                        hasta
+                    }
+
+                    doPost(req, '/api/cargarHorasRango', true);
+                }
+            });
+
+            $("#consultarMes").on('click', function () {
+                var token = $('#tokenMesC').val();
+                var mes = (parseInt($('#mesMesC').val().split('-')[1]) - 1);
+                if (token && mes >= 0) {
+                    var req = {
+                        token,
+                        mes
+                    }
+
+                    doPost(req, '/api/consultarHsXMes', false);
+                }
+            });
+
+        });
+
+        function doPost(dat, uri, alert) {
+            $(".loading").show();
+            $.ajax({
+                type: 'POST',
+                data: JSON.stringify(dat),
+                contentType: "application/json; charset=utf-8",
+                url: uri,
+                success: function (data) {
+                    $(".loading").hide();
+                    $("#aError").hide();
+                    console.log('success');
+                    if (alert) {
+                        $("#aSuccess").show();
+                    } else {
+                        addResults(data);
+                    }
+                    reset();
+                },
+                error: function (data) {
+                    console.log('error');
+                    $(".loading").hide();
+                    $("#aSuccess").hide();
+                    $("#aError").show();
+                }
+            });
+        };
+
+        function addResults(data) {
+            if (data && data.user && data.time_entries) {
+                var rList = $('#tbody');
+                var totalHs = 0;
+                rList.empty();
+
+                /*                 $.each(data.time_entries, function (i) {
+                                    totalHs += data.time_entries[i].hours;
+                                    var li = $('<li/>')
+                                        .addClass('list-group-item')
+                                        .text(data.time_entries[i].spent_on)
+                                        .appendTo(rList);
+                                }); */
+
+                $.each(data.time_entries, function (key, val) {
+                    totalHs += data.time_entries[key].hours;
+                    rList.append("<tr><td>" + val.spent_on + "</td><td>" + val.hours + "</td><td>" + val.custom_fields[0].value + "</td><td>" + val.project.name + ' / ' + val.issue.id + "</td><td>" + val.activity.name + "</td></tr>");
+                });
+
+
+                $('#resultName').text(data.user.firstname + ' ' + data.user.lastname);
+                $('#resultTotal').text(totalHs);
+                $('#resultList').show();
+            }
+        }
+
+        function resetForm(target) {
+            var container = target;
+            container.find(".valid, .invalid").removeClass("valid invalid")
+            container.css("background", "");
+            container.css("color", "");
+        }
+
+        function reset() {
+            $('#tokenMes').val('');
+            $('#issueMes').val('');
+            $('#hsMes').val('');
+            $('#mesMes').val('');
+
+            $('#tokenDia').val('');
+            $('#issueDia').val('');
+            $('#hsDia').val('');
+            $('#diaDia').val('');
+
+            $('#tokenRango').val('');
+            $('#issueRango').val('');
+            $('#hsRango').val('');
+            $('#desdeRango').val('');
+            $('#hastaRango').val('');
+
+            var container = $(".req-input input").closest(".form-container");
+            resetForm(container);
+        }
+
+        function setRow(valid, Parent) {
+            var error = 0;
+            if (valid) {
+                Parent.addClass("valid");
+                Parent.removeClass("invalid");
+            } else {
+                error = 1;
+                Parent.addClass("invalid");
+                Parent.removeClass("valid");
+            }
+            return error;
+        }
+
+        function validate(target) {
+            var error = 0;
+            target.find(".req-input input").each(function () {
+                var id = $(this).attr("id");
+                var Parent = $(this).parent();
+                var val = $(this).val();
+
+                if ($(this).is(":visible") == false)
+                    return true;
+
+                var minLength = $(this).data("min-length");
+                if (typeof minLength == "undefined")
+                    minLength = 0;
+                error += setRow(val.length >= minLength, Parent);
+
+            });
+
+            var submitForm = target.find(".submit-form");
+            var formContainer = target;
+            var formTitle = target.find(".form-title");
+            if (error == 0) {
+                formContainer.css("background", "#C8E6C9");
+                formContainer.css("color", "#2E7D32");
+                submitForm.addClass("valid");
+                submitForm.removeClass("invalid");
+                return true;
+            } else {
+                formContainer.css("background", "#FFCDD2");
+                formContainer.css("color", "#C62828");
+                submitForm.addClass("invalid");
+                submitForm.removeClass("valid");
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
