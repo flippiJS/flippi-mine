@@ -273,7 +273,7 @@ function obtenerFeriados() {
 function obtenerDiasLaborables(dias, mes) {
     const feriadoXMes = listaFeriados[mes];
     Object.keys(feriadoXMes).forEach(function (d) {
-        if (feriadoXMes[d].tipo === 'inamovible' || feriadoXMes[d].tipo === 'puente') {
+        if (feriadoXMes[d].tipo === 'inamovible' || feriadoXMes[d].tipo === 'puente' || feriadoXMes[d].tipo === 'trasladable') {
             dias = dias.filter(dia => parseInt(dia.getDate()) !== parseInt(d)); // Quitamos el dia feriado
         }
     });
