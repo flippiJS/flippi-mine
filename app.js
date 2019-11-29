@@ -7,9 +7,9 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var url = process.env.REDMINE_HOST || 'http://customers.daeva.com.ar:8080';
+var url = process.env.REDMINE_HOST || '';
 var config = {
-    apiKey: process.env.REDMINE_APIKEY || '27d5c1b01f425568c5cfddfcb7305aa8f595e12b',
+    apiKey: process.env.REDMINE_APIKEY || '',
     format: 'json'
 };
 
